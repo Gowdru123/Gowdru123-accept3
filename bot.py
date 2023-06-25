@@ -13,10 +13,6 @@ app = Client(
     bot_token=cfg.BOT_TOKEN
 )
 
-gif = [
-    'https://graph.org/file/268a0455332bbcb5e1a0d.mp4'
-]
-
 
 #━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ Main process ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -28,7 +24,7 @@ async def approve(_, m : Message):
         add_group(m.chat.id)
         await app.approve_chat_join_request(op.id, kk.id)
         img = random.choice(gif)
-        await app.send_video(kk.id,img, "**{},\nWelcome To {}\n\n__By : @ROCKERSBACKUP**".format(m.from_user.mention, m.chat.title))
+        await app.replay_text(kk.id,img, "**/start**")
         add_user(kk.id)
     except errors.PeerIdInvalid as e:
         print("user isn't start bot(means group)")
